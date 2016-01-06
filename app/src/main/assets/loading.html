@@ -1,0 +1,83 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            height:100%;
+            width: 100%;
+        }
+        
+        #container {
+            background: #000000;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        #external {
+            background: #aaaaaa;
+            width: 240px;
+            height: 240px;
+            position: absolute;
+            border-radius: 50%;
+            top: 50%;
+            margin-top: -120px;
+            left: 50%;
+            margin-left: -120px;
+            -webkit-transition: 45ms linear;
+            -moz-transition: 45ms linear;
+            -o-transition: 45ms linear;
+            -ms-transition: 45ms linear;
+            transition: 45ms linear;
+        }
+        
+        #internal {
+            background: #ffffff;
+            width: 130px;
+            height: 130px;
+            position: relative;
+            border-radius: 50%;
+            margin: auto;
+            top: 55px;
+            -webkit-transition: 45ms linear;
+            -moz-transition: 45ms linear;
+            -o-transition: 45ms linear;
+            -ms-transition: 45ms linear;
+            transition: 45ms linear;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="external">
+            <div id="internal">
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var extEl = document.getElementById('external').style;
+        var intEl = document.getElementById('internal').style;
+        var conEl = document.getElementById('container').style;
+        conEl.height = window.innerHeight;
+        conEl.width = window.innerWidth;
+
+        function set(a) {
+            if (a > 100)
+                a = 100;
+            else if (a < 0)
+                a = 0;
+            a = parseInt(240 + a * 45 / 100, 10);
+            extEl.height = a;
+            extEl.width = a;
+            extEl.marginTop = -(a / 2);
+            extEl.marginLeft = -(a / 2);
+            intEl.top = (a - 130) / 2;
+        }
+    </script>
+</body>
+</html>
